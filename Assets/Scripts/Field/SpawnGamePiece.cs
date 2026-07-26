@@ -73,8 +73,7 @@ public class SpawnGamePiece : MonoBehaviour
         if (!CanSpawn() || !_piecesMap.TryGetValue(pieceTypeEnum, out GameObject piecePrefab)) 
             return;
 
-        var item = Instantiate(piecePrefab, spawnPosition, transform.rotation, transform)
-            .GetComponent<GamePiece>();
+        var item = GamePiecePool.Get(pieceTypeEnum, piecePrefab, spawnPosition, transform.rotation, transform);
     
         // Use local directions transformed to world space
         Vector3 finalVelocity;

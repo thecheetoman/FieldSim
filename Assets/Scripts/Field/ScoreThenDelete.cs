@@ -37,7 +37,7 @@ public class ScoreThenDelete : FieldScorer
                 piece.rb.detectCollisions = false;
             }
 
-            Destroy(piece.gameObject);
+            GamePiecePool.Return(piece);
         }
 
         ScorePoints(scoredCount);

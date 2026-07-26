@@ -15,31 +15,21 @@ public class GeneratePart : MonoBehaviour
     private string partName;
     [HideInInspector] public bool ObjectSpawned;
     
-    /// <summary>
-    /// The name of the Object to use
-    /// </summary>
     [HideInInspector] public string PartName;
 
-    /// <summary>
-    /// The part(GameObject) to generate
-    /// </summary>
     [HideInInspector] public GameObject Part;
-    /// <summary>
-    /// The transform relative to the scripts object to put the part
-    /// </summary>
     [HideInInspector] public Vector3 LoadedPartLocation;
-/// <summary>
-/// The rotation relative to the scripts object to put the part
-/// </summary>
     [HideInInspector] public Quaternion LoadedPartRotation;
-/// <summary>
-/// The Scale for the object to use.
-/// </summary>
     [HideInInspector] public Vector3 LoadedPartScale;
     
     private GameObject currentPart;
-    
     private GameObject _loadedPart;
+
+    private string _lastPartName;
+    private Vector3 _lastLocation;
+    private Quaternion _lastRotation;
+    private Vector3 _lastScale;
+    private GameObject _lastPartPrefab;
     
 
     // Start is called before the first frame update
@@ -65,6 +55,21 @@ public class GeneratePart : MonoBehaviour
 
     protected void run()
     {
+        if (PartName == _lastPartName
+            && Part == _lastPartPrefab
+            && LoadedPartLocation == _lastLocation
+            && LoadedPartRotation == _lastRotation
+            && LoadedPartScale == _lastScale)
+        {
+            return;
+        }
+
+        _lastPartName = PartName;
+        _lastPartPrefab = Part;
+        _lastLocation = LoadedPartLocation;
+        _lastRotation = LoadedPartRotation;
+        _lastScale = LoadedPartScale;
+
         if (PartName != null && Part != null)
         {
             partName = PartName;

@@ -532,6 +532,8 @@ public class LoadMatch : MonoBehaviour
         SpawnGamePiece.ClearTargets();
         Utils.resetParentCache();
 
+        GamePiecePool.Clear();
+
         CheckRobots();
         SanitizeSettings();
         SanitizeSpawnSettings();
@@ -1044,12 +1046,24 @@ public class LoadMatch : MonoBehaviour
         }
     }
 
+    private static GameObject[] _cachedRobots;
+    private static bool _robotsCacheValid;
+
     public void CheckRobots()
     {
-        GameObject[] loadedRobots = Resources.LoadAll<GameObject>("Robots");
+        if (_robotsCacheValid)
+        {
+            _availableRobots.Clear();
+            _availableRobots.AddRange(_cachedRobots);
+            SanitizeSettings();
+            return;
+        }
+
+        _cachedRobots = Resources.LoadAll<GameObject>("Robots");
+        _robotsCacheValid = true;
 
         _availableRobots.Clear();
-        _availableRobots.AddRange(loadedRobots);
+        _availableRobots.AddRange(_cachedRobots);
 
         SanitizeSettings();
     }

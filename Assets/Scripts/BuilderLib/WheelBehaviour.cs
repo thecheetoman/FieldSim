@@ -10,8 +10,15 @@ public class WheelBehaviour : MonoBehaviour
 
     [SerializeField] private float wheelWidth = 0.2f;
 
+    private int _castSkipCounter;
+
     private void FixedUpdate()
     {
+        _castSkipCounter++;
+        if (_castSkipCounter < 2)
+            return;
+        _castSkipCounter = 0;
+
         collisionPoints.Clear();
         collisionNormals.Clear();
 
