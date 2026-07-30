@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class TankDrive : MonoBehaviour
 {
-    private Vector2 movementInput; //Store movement input, updated through onMove method
+    private Vector2 movementInput; //store movement input, updated through onMove method
     public Rigidbody rigid;
     public WheelCollider FL, FR, ML, MR, BL, BR;
     public float drivespeed, rotationspeed;
