@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7064080379357521079}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: GamePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,9 +142,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1738579720076534653}
+  - component: {fileID: 7921399196997792038}
   m_Layer: 0
   m_Name: Fuel
-  m_TagString: Untagged
+  m_TagString: GamePiece
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,3 +166,20 @@ Transform:
   - {fileID: 1199882749131510569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7921399196997792038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5326087760068062104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e86763d07b54e8d41b8d24a04edc0040, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waypoints: []
+  moveSpeed: 6
+  rollSpeed: 500
+  launchSpeed: 12
+  autoShootAtEnd: 1
