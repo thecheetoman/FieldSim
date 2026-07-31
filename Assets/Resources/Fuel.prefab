@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6744607376957123373}
   - component: {fileID: 1134671666712833824}
   - component: {fileID: 7064080379357521079}
+  - component: {fileID: 3892354264717036768}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: GamePiece
@@ -114,7 +115,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2643225760479341144}
   serializedVersion: 4
-  m_Mass: 0.2
+  m_Mass: 0.5
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -133,6 +134,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &3892354264717036768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2643225760479341144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31b8ed40b0d10134d8cb0b0a0a601a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5326087760068062104
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,7 +155,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1738579720076534653}
-  - component: {fileID: 7921399196997792038}
   m_Layer: 0
   m_Name: Fuel
   m_TagString: GamePiece
@@ -166,20 +178,3 @@ Transform:
   - {fileID: 1199882749131510569}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7921399196997792038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5326087760068062104}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e86763d07b54e8d41b8d24a04edc0040, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints: []
-  moveSpeed: 6
-  rollSpeed: 500
-  launchSpeed: 12
-  autoShootAtEnd: 1
