@@ -9826,6 +9826,7 @@ GameObject:
   - component: {fileID: 1972343979715687290}
   - component: {fileID: 3696779906291324155}
   - component: {fileID: 8108515722720691053}
+  - component: {fileID: 8211042105722813803}
   m_Layer: 0
   m_Name: 'KB-26007: Brace Shaft.002'
   m_TagString: Untagged
@@ -9898,6 +9899,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &8211042105722813803
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1686601849398708652}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.0045212, y: 0.00014082073, z: 0.00014665961}
+  m_Center: {x: -1.4901161e-10, y: -0.0035655575, z: -0.002950179}
 --- !u!1 &1689794528371697109
 GameObject:
   m_ObjectHideFlags: 0
@@ -53949,7 +53971,7 @@ GameObject:
   - component: {fileID: 727665400128227553}
   m_Layer: 0
   m_Name: drivetrain
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
