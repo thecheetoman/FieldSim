@@ -49,7 +49,7 @@
                 {
                     "name": "up",
                     "id": "fdeb5eb3-8765-4e91-8d1a-dc6b82a5432f",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -60,7 +60,7 @@
                 {
                     "name": "down",
                     "id": "49cc927d-5134-475d-8191-aff67e1f7dee",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -18,7 +18,6 @@ public class TankDrive : MonoBehaviour
     }
     void FixedUpdate()
     {
-        float motor = movementInput.y * drivespeed; // get the y axis of movement input and multiply it by drivespeed
         float leftSideTorque = (movementInput.y * drivespeed) + (movementInput.x * rotationspeed);
         float rightSideTorque = (movementInput.y * drivespeed) - (movementInput.x * rotationspeed);
 

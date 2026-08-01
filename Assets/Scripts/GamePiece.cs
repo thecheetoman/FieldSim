@@ -12,14 +12,12 @@ public class GamePiece : MonoBehaviour
         colliders = GetComponentsInChildren<Collider>();
     }
 
-    /// <summary>
-    /// Snaps the ball into a slot, disables physics, and disables colliders.
-    /// </summary>
+
     public void Capture(Transform targetSlot)
     {
         transform.SetParent(targetSlot);
         transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
+        //transform.localRotation = Quaternion.identity;
 
         rb.isKinematic = true;
 
@@ -29,9 +27,6 @@ public class GamePiece : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Teleports ball to launch point, re-enables physics/colliders, and launches it.
-    /// </summary>
     public void Launch(Vector3 launchPosition, Quaternion launchRotation, Vector3 launchVelocity)
     {
         transform.SetParent(null);
