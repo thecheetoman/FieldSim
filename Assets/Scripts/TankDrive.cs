@@ -21,6 +21,31 @@ public class TankDrive : MonoBehaviour
     public float maxPitch = 1.6f;
     public float audioSmoothSpeed = 8f;
 
+    // Track robot enabled state
+    private bool isRobotEnabled = true;
+
+    private void OnEnable()
+    {
+        GameManager.OnRobotStateChanged += HandleRobotStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnRobotStateChanged -= HandleRobotStateChanged;
+    }
+
+    private void HandleRobotStateChanged(bool enabledState)
+    {
+        isRobotEnabled = enabledState;
+
+        if (!isRobotEnabled)
+        {
+            // Zero out motor torques when robot is disabled
+            ResetMotorTorque();
+            movementInput = Vector2.zero;
+        }
+    }
+
     private void Start()
     {
         if (rigid == null)
@@ -44,6 +69,12 @@ public class TankDrive : MonoBehaviour
 
     public void OnMove(InputValue value)
     {
+        if (!isRobotEnabled)
+        {
+            movementInput = Vector2.zero;
+            return;
+        }
+
         movementInput = value.Get<Vector2>();
     }
 
@@ -54,6 +85,13 @@ public class TankDrive : MonoBehaviour
 
     void FixedUpdate()
     {
+        // If robot is disabled, stop applying motor torques but let momentum coast naturally
+        if (!isRobotEnabled)
+        {
+            ResetMotorTorque();
+            return;
+        }
+
         if (Input.GetKey(KeyCode.Space))
         {
             FL.brakeTorque = brakeForce;
@@ -93,8 +131,8 @@ public class TankDrive : MonoBehaviour
         float currentSpeed = rigid.velocity.magnitude;
         float speedRatio = Mathf.Clamp01(currentSpeed / topSpeedForAudio);
 
-        // If braking, force speed ratio to zero (silent)
-        if (Input.GetKey(KeyCode.Space))
+        // If braking or robot is disabled, force speed ratio to zero (silent)
+        if (Input.GetKey(KeyCode.Space) || !isRobotEnabled)
         {
             speedRatio = 0f;
         }

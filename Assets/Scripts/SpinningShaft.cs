@@ -65,11 +65,32 @@ public class SpinningShaft : MonoBehaviour
             }
         }
     }
+    
+    private bool isRobotEnabled = true;
 
+    private void OnEnable()
+    {
+        GameManager.OnRobotStateChanged += HandleRobotStateChanged;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnRobotStateChanged -= HandleRobotStateChanged;
+    }
+
+    private void HandleRobotStateChanged(bool enabledState)
+    {
+        isRobotEnabled = enabledState;
+
+        if (!isRobotEnabled)
+        {
+            isSpinning = false;
+        }
+    }
     void Update()
     {
         // check if the key is being held down
-        isSpinning = Input.GetKey(rotationKey);
+        isSpinning = isRobotEnabled && Input.GetKey(rotationKey);
 
         if (shaftMesh == null) return;
 

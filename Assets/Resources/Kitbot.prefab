@@ -1633,6 +1633,7 @@ MonoBehaviour:
   rotationspeed: 20
   brakeForce: 3000
   engineAudioSource: {fileID: 4675037958997088054}
+  topSpeedForAudio: 10
   minPitch: 0.6
   maxPitch: 1
   audioSmoothSpeed: 8
@@ -1683,7 +1684,7 @@ MonoBehaviour:
   shaftName: Initial intake
   maxSpinSpeed: 1000
   acceleration: 7200
-  deceleration: 14400
+  deceleration: 7000
   rotationAxis: {x: 1, y: 0, z: 0}
   rotationKey: 304
   direction: 0
@@ -1712,9 +1713,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shaftMesh: {fileID: 2311487134006658211}
   shaftName: Intake exciter
-  maxSpinSpeed: 1800
+  maxSpinSpeed: 4000
   acceleration: 7200
-  deceleration: 14400
+  deceleration: 7000
   rotationAxis: {x: 1, y: 0, z: 0}
   rotationKey: 304
   direction: 0
@@ -1743,9 +1744,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shaftMesh: {fileID: 2655775743251251587}
   shaftName: Hopper Exciter
-  maxSpinSpeed: 700
+  maxSpinSpeed: 1000
   acceleration: 7200
-  deceleration: 14400
+  deceleration: 7000
   rotationAxis: {x: 1, y: 0, z: 0}
   rotationKey: 304
   direction: 0
@@ -3593,8 +3594,8 @@ MonoBehaviour:
   intakeKey: 304
   shootKey: 32
   launchSpeed: 10
-  minShootDelay: 0.6
-  maxShootDelay: 1
+  minShootDelay: 0.5
+  maxShootDelay: 0.8
   requireShooterEvent: 1
   isShooterReady: 0
   storageSlots:
@@ -30350,6 +30351,7 @@ GameObject:
   - component: {fileID: 5673888639277164959}
   - component: {fileID: 4089467409458055444}
   - component: {fileID: 4723301101039063243}
+  - component: {fileID: 1176624255272461129}
   m_Layer: 0
   m_Name: Robot Signal Light (RSL) (Allen Bradley)
   m_TagString: Untagged
@@ -30423,6 +30425,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1176624255272461129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4632731697909198130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 263191fc5352a4c499c58cd565d48b41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RSLOn: {fileID: 2100000, guid: f5ce6d7e1cc092a40adb145492af71f1, type: 2}
+  RSLOff: {fileID: 2100000, guid: 8b590cdd55072af4da070a1fb4350df6, type: 2}
+  flashInterval: 0.5
 --- !u!1 &4640841905389104568
 GameObject:
   m_ObjectHideFlags: 0

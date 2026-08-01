@@ -19,12 +19,9 @@ public class HubFuelSFX : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("there colllisiob us");
-
         if (collision.gameObject.CompareTag("GamePiece"))
         {
             PlayImpactSFX(collision);
-            Debug.Log("Fuel SFX played");
         }
     }
 
