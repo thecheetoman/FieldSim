@@ -21,6 +21,12 @@ public class HopperManager : MonoBehaviour
     [SerializeField] private List<Transform> storageSlots = new List<Transform>();
     [SerializeField] private Transform launchPoint;
 
+    [Header("Preload Settings")]
+    [Tooltip("The GamePiece prefab to spawn when preloading fuel at match start.")]
+    [SerializeField] private GameObject fuelPrefab;
+    [Tooltip("How many pieces of fuel to start the match loaded with.")]
+    [Range(0, 8)][SerializeField] private int preloadCount = 1;
+
     // fifo queue of currently stored game pieces
     // first in first out
     private List<GamePiece> loadedBalls = new List<GamePiece>();
@@ -28,6 +34,24 @@ public class HopperManager : MonoBehaviour
     // keep track of when the next ball can be shot
     private float nextShootTime = 0f;
 
+    private void Start()
+    {
+        if (fuelPrefab == null) return;
+        int amountToLoad = Mathf.Min(preloadCount, storageSlots.Count);
+
+        for (int i = 0; i < amountToLoad; i++)
+        {
+            Transform slotTransform = storageSlots[i];
+
+            // instantate prefab at slot position
+            GameObject newFuelObject = Instantiate(fuelPrefab, slotTransform.position, slotTransform.rotation);
+
+            if (newFuelObject.TryGetComponent<GamePiece>(out GamePiece ball))
+            {
+                IntakeBall(ball);
+            }
+        }
+    }
     private void Update()
     {
         // check if shooting contitions are met before shooting
@@ -48,17 +72,11 @@ public class HopperManager : MonoBehaviour
 
     #region Public Event Callbacks (Hook these up to SpinningShaft events)
 
-    /// <summary>
-    /// Call this from SpinningShaft's OnMaxSpeedReached event.
-    /// </summary>
     public void SetShooterReady()
     {
         isShooterReady = true;
     }
 
-    /// <summary>
-    /// Call this from SpinningShaft's OnRampDownStarted event.
-    /// </summary>
     public void SetShooterNotReady()
     {
         isShooterReady = false;
