@@ -85061,7 +85061,7 @@ MonoBehaviour:
   fieldSFX: {fileID: 982276909}
   soundEffects:
   - {fileID: 8300000, guid: 8c5bd56323e021a44843b27192c6e220, type: 3}
-  - {fileID: 8300000, guid: ca96c81a6287bbb4086bf4a97b1c2f17, type: 3}
+  - {fileID: 8300000, guid: be36ad8fa68111f4298bdf069d0283df, type: 3}
   - {fileID: 8300000, guid: 307dfa7a10eb6fc44a03fb93e8986e8d, type: 3}
   - {fileID: 8300000, guid: 03833aa024360854daf7914248c70a4c, type: 3}
   - {fileID: 8300000, guid: 03833aa024360854daf7914248c70a4c, type: 3}
@@ -85069,10 +85069,15 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca96c81a6287bbb4086bf4a97b1c2f17, type: 3}
   - {fileID: 8300000, guid: be36ad8fa68111f4298bdf069d0283df, type: 3}
   isBlueAlliance: 1
+  autoDuration: 15
+  teleopTransitionDuration: 10
+  shiftDuration: 25
+  endgameDuration: 30
   blueTMPObject: {fileID: 131511230}
   redTMPObject: {fileID: 995995573}
   blueShift: {fileID: 574505236}
   redShift: {fileID: 1183172332}
+  timer: {fileID: 1451021742}
   RedHub: {fileID: 1813048797}
   BlueHub: {fileID: 567256865}
 --- !u!4 &982276908
