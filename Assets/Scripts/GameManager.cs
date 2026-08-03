@@ -52,10 +52,25 @@ public class GameManager : MonoBehaviour
     public HubMaterialController RedHub;
     public HubMaterialController BlueHub;
 
+    [Header("Player Robot")]
+    [SerializeField] private List<GameObject> prefabList = new List<GameObject>();
+    [SerializeField] private int selectedIndex = 0;
+    [SerializeField] private Transform spawnLocation;
+
     private Coroutine matchRoutine;
 
     private void Start()
     {
+        int safeIndex = Mathf.Clamp(selectedIndex, 0, prefabList.Count - 1);
+
+        GameObject chosenPrefab = prefabList[safeIndex];
+
+        if (chosenPrefab != null)
+        {
+            Vector3 targetPosition = spawnLocation != null ? spawnLocation.position : Vector3.zero;
+            Instantiate(chosenPrefab, targetPosition, Quaternion.identity);
+        }
+
         // start match with robot disabled and active hub arrow indicators hidden
         SetRobotEnabled(false);
 

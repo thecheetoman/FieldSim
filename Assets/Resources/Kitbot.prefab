@@ -3593,7 +3593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intakeKey: 304
   shootKey: 32
-  launchSpeed: 10
+  launchSpeed: 8
   minShootDelay: 0.5
   maxShootDelay: 0.8
   requireShooterEvent: 1
@@ -3615,8 +3615,9 @@ MonoBehaviour:
   - {fileID: 3302469351842376937}
   - {fileID: 4667986366560950129}
   launchPoint: {fileID: 3138410677106334568}
-  fuelPrefab: {fileID: 0}
-  preloadCount: 1
+  fuelPrefab: {fileID: 5326087760068062104, guid: 2f5fba24e9940304381ded66993a6ee0,
+    type: 3}
+  preloadCount: 8
 --- !u!1 &547832459125637575
 GameObject:
   m_ObjectHideFlags: 0
@@ -54421,8 +54422,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8290147125955363416}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.274, y: 0, z: -0.225}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.16, y: 0, z: -0.285}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54433,7 +54434,7 @@ Transform:
   - {fileID: 9147904392802767882}
   - {fileID: 3156986883652324125}
   m_Father: {fileID: 1051323599310344612}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!54 &727665400128227553
 Rigidbody:
   m_ObjectHideFlags: 0
