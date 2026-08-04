@@ -10,7 +10,7 @@ public class TankDrive : MonoBehaviour
     public WheelCollider FL, FR, ML, MR, BL, BR;
     public float drivespeed, rotationspeed;
     public float brakeForce = 3000f;
-
+    [SerializeField] private bool canShootMove = false;
     [Header("Audio Settings")]
     public AudioSource engineAudioSource;
     [Tooltip("The physical speed (m/s) at which audio reaches max pitch and volume.")]
@@ -92,7 +92,7 @@ public class TankDrive : MonoBehaviour
             return;
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && !canShootMove)
         {
             FL.brakeTorque = brakeForce;
             FR.brakeTorque = brakeForce;
@@ -132,7 +132,7 @@ public class TankDrive : MonoBehaviour
         float speedRatio = Mathf.Clamp01(currentSpeed / topSpeedForAudio);
 
         // If braking or robot is disabled, force speed ratio to zero (silent)
-        if (Input.GetKey(KeyCode.Space) || !isRobotEnabled)
+        if (Input.GetKey(KeyCode.Space) && !canShootMove || !isRobotEnabled)
         {
             speedRatio = 0f;
         }
