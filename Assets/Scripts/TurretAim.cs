@@ -2,17 +2,22 @@ using UnityEngine;
 
 public class TurretAim : MonoBehaviour
 {
+    public enum RotationAxis { X, Y, Z }
+
     [Header("Pivot Settings")]
-    [Tooltip("The transform that rotates on the Z axis.")]
+    [Tooltip("The transform that rotates to face the target.")]
     [SerializeField] private Transform yawPivot;
+
+    [Tooltip("Select which local axis rotates toward the target.")]
+    [SerializeField] private RotationAxis activeAxis = RotationAxis.Z;
 
     [Header("Rotation Parameters")]
     [SerializeField] private float rotationSpeed = 360f; // Degrees per second
     [SerializeField] private bool isSmooth = true;
     [SerializeField] private float smoothSpeed = 10f;
 
-    [Tooltip("Manual angle offset (in degrees) added to the calculated Z angle.")]
-    [SerializeField] private float zOffsetAngle = 0f;
+    [Tooltip("Manual angle offset (in degrees) added to the calculated angle.")]
+    [SerializeField] private float angleOffset = 0f;
 
     private Transform currentTarget;
     private Transform hubTarget;
@@ -23,19 +28,16 @@ public class TurretAim : MonoBehaviour
 
     private void OnEnable()
     {
-        // Subscribe to robot state changed event from GameManager
         GameManager.OnRobotStateChanged += HandleRobotStateChanged;
     }
 
     private void OnDisable()
     {
-        // Unsubscribe from event when component/object is disabled to prevent memory leaks
         GameManager.OnRobotStateChanged -= HandleRobotStateChanged;
     }
 
     private void Start()
     {
-        // Cache target references using tags
         GameObject hubObj = GameObject.FindWithTag("Hub");
         if (hubObj != null) hubTarget = hubObj.transform;
 
@@ -45,13 +47,11 @@ public class TurretAim : MonoBehaviour
         GameObject passRightObj = GameObject.FindWithTag("Passright");
         if (passRightObj != null) passRightTarget = passRightObj.transform;
 
-        // Default to Hub target on start
         currentTarget = hubTarget;
     }
 
     private void Update()
     {
-        // Only allow targeting and input when robot is enabled
         if (!isRobotEnabled) return;
 
         HandleInput();
@@ -92,11 +92,26 @@ public class TurretAim : MonoBehaviour
             ? yawPivot.parent.InverseTransformDirection(worldDirection)
             : worldDirection;
 
-        float baseAngle = Mathf.Atan2(localDirection.y, localDirection.x) * Mathf.Rad2Deg;
-        float finalZAngle = baseAngle + zOffsetAngle;
-
         Vector3 currentLocalEuler = yawPivot.localEulerAngles;
-        Quaternion targetRotation = Quaternion.Euler(currentLocalEuler.x, currentLocalEuler.y, finalZAngle);
+        Quaternion targetRotation = yawPivot.localRotation;
+
+        switch (activeAxis)
+        {
+            case RotationAxis.X:
+                float xAngle = (Mathf.Atan2(localDirection.z, localDirection.y) * Mathf.Rad2Deg) + angleOffset;
+                targetRotation = Quaternion.Euler(xAngle, currentLocalEuler.y, currentLocalEuler.z);
+                break;
+
+            case RotationAxis.Y:
+                float yAngle = (Mathf.Atan2(localDirection.x, localDirection.z) * Mathf.Rad2Deg) + angleOffset;
+                targetRotation = Quaternion.Euler(currentLocalEuler.x, yAngle, currentLocalEuler.z);
+                break;
+
+            case RotationAxis.Z:
+                float zAngle = (Mathf.Atan2(localDirection.y, localDirection.x) * Mathf.Rad2Deg) + angleOffset;
+                targetRotation = Quaternion.Euler(currentLocalEuler.x, currentLocalEuler.y, zAngle);
+                break;
+        }
 
         if (isSmooth)
         {

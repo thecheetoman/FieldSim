@@ -36886,6 +36886,7 @@ GameObject:
   - component: {fileID: 438499823}
   - component: {fileID: 438499825}
   - component: {fileID: 438499824}
+  - component: {fileID: 438499826}
   m_Layer: 0
   m_Name: 'GE-26318: Hub Net (Aesthetic)'
   m_TagString: Untagged
@@ -36982,6 +36983,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438499822}
+  m_Mesh: {fileID: 6992187445304417120, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
+--- !u!64 &438499826
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438499822}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 6992187445304417120, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
 --- !u!1 &438700045
 GameObject:
@@ -85236,6 +85259,7 @@ MonoBehaviour:
   prefabList:
   - {fileID: 296568160100139844, guid: fa9e4bbb6a6373f41955d33b0b9977c9, type: 3}
   - {fileID: 7874179249615635595, guid: b7ecf450de3e24b42b634ead5189e8c8, type: 3}
+  - {fileID: 9137515320569696753, guid: 2efae3df52e8c264a8a3d4c73327a3ac, type: 3}
   selectedIndex: 1
   spawnLocation: {fileID: 47061399}
 --- !u!4 &982276908

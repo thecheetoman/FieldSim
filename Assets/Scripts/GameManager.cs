@@ -262,7 +262,7 @@ public class GameManager : MonoBehaviour
                 if (isAutoPhase) scoreRed += 1;
             }
             else
-            {
+            {   
                 scoreBlue += 1;
                 if (isAutoPhase) autoScoreBlue += 1;
             }

@@ -2,16 +2,24 @@ using UnityEngine;
 
 public class HoodAim : MonoBehaviour
 {
+    public enum RotationAxis { X, Y, Z }
+
     [Header("Pivot Settings")]
-    [Tooltip("The transform responsible for hood pitch (rotates on local Z-axis).")]
+    [Tooltip("The transform responsible for hood pitch.")]
     [SerializeField] private Transform hoodPivot;
 
+    [Tooltip("Select which local axis controls the hood angle.")]
+    [SerializeField] private RotationAxis activeAxis = RotationAxis.Z;
+
     [Header("Hood Angle Range")]
-    [Tooltip("Hood Z-angle when closest to target.")]
+    [Tooltip("Hood angle when closest to target.")]
     [SerializeField] private float minHoodAngle = 0f;
 
-    [Tooltip("Hood Z-angle when furthest from target.")]
+    [Tooltip("Hood angle when furthest from target.")]
     [SerializeField] private float maxHoodAngle = 45f;
+
+    [Tooltip("Invert calculated angle (negate value). Defaults to true.")]
+    [SerializeField] private bool invertAngle = true;
 
     [Header("Distance Range")]
     [Tooltip("Distance (in meters) corresponding to minHoodAngle.")]
@@ -25,8 +33,8 @@ public class HoodAim : MonoBehaviour
     [SerializeField] private bool isSmooth = true;
     [SerializeField] private float smoothSpeed = 10f;
 
-    [Tooltip("Manual angle offset (in degrees) added to the calculated Z angle.")]
-    [SerializeField] private float zOffsetAngle = 0f;
+    [Tooltip("Manual angle offset (in degrees) added to the calculated angle.")]
+    [SerializeField] private float angleOffset = 0f;
 
     private Transform currentTarget;
     private Transform hubTarget;
@@ -103,12 +111,32 @@ public class HoodAim : MonoBehaviour
         float t = Mathf.InverseLerp(minDistance, maxDistance, distance);
         float calculatedAngle = Mathf.Lerp(minHoodAngle, maxHoodAngle, t);
 
-        float finalZAngle = calculatedAngle + zOffsetAngle;
-        finalZAngle = -finalZAngle;
+        float finalAngle = calculatedAngle + angleOffset;
 
-        // Apply only to Z-axis while keeping X and Y unchanged
+        // Invert if bool is set (defaults to true)
+        if (invertAngle)
+        {
+            finalAngle = -finalAngle;
+        }
+
         Vector3 currentLocalEuler = hoodPivot.localEulerAngles;
-        Quaternion targetRotation = Quaternion.Euler(currentLocalEuler.x, currentLocalEuler.y, finalZAngle);
+        Quaternion targetRotation = hoodPivot.localRotation;
+
+        // Apply calculated angle to selected axis while preserving others
+        switch (activeAxis)
+        {
+            case RotationAxis.X:
+                targetRotation = Quaternion.Euler(finalAngle, currentLocalEuler.y, currentLocalEuler.z);
+                break;
+
+            case RotationAxis.Y:
+                targetRotation = Quaternion.Euler(currentLocalEuler.x, finalAngle, currentLocalEuler.z);
+                break;
+
+            case RotationAxis.Z:
+                targetRotation = Quaternion.Euler(currentLocalEuler.x, currentLocalEuler.y, finalAngle);
+                break;
+        }
 
         if (isSmooth)
         {
