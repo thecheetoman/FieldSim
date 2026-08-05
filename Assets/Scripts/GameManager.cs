@@ -239,24 +239,48 @@ public class GameManager : MonoBehaviour
     {
         if (!gameStarted || isMatchOver) return;
 
+        // Find the player using the "Player" tag
+        GameObject player = GameObject.FindWithTag("Player");
+
+        // Check if player exists and if their X position is less than 3.429
+        bool isBelowXThreshold = false;
+        if (player != null && player.transform.position.x < 3.429f)
+        {
+            isBelowXThreshold = true;
+        }
+
         if (isBlue)
         {
             if (!isBlueHubActive) return; // Ignore score if Hub is inactive!
 
-            scoreBlue += 1;
-            if (isAutoPhase)
+            if (isBelowXThreshold)
             {
-                autoScoreBlue += 1;
+                // Award 10 points to the other team (Red)
+                scoreRed += 10;
+                scoreBlue += 1;
+                if (isAutoPhase) autoScoreRed += 10;
+                if (isAutoPhase) scoreRed += 1;
+            }
+            else
+            {
+                scoreBlue += 1;
+                if (isAutoPhase) autoScoreBlue += 1;
             }
         }
         else
         {
             if (!isRedHubActive) return; // Ignore score if Hub is inactive!
 
-            scoreRed += 6;
-            if (isAutoPhase)
+            if (isBelowXThreshold)
             {
-                autoScoreRed += 6;
+                // Award 10 points to the other team (Blue)
+                scoreBlue += 10;
+                if (isAutoPhase) autoScoreBlue += 10;
+            }
+            else
+            {
+                scoreRed += 6;
+                if (isAutoPhase) autoScoreRed += 6;
             }
         }
 
