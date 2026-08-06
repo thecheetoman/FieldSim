@@ -65299,7 +65299,7 @@ MonoBehaviour:
   shootKey: 32
   launchSpeed: 9
   minShootDelay: 0.1
-  maxShootDelay: 0.3
+  maxShootDelay: 0.2
   requireShooterEvent: 1
   isShooterReady: 0
   storageSlots:

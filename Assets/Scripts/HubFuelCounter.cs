@@ -21,11 +21,9 @@ public class HubFuelCounter : MonoBehaviour
         {
             if (other.TryGetComponent<GamePiece>(out GamePiece piece))
             {
-                // Pass whether this is the Blue Hub AND whether the piece was shot legally
+                // Pass whether this is the Blue Hub AND whether the piece was shot legally.
+                // Fuel is never destroyed; it stays in play after scoring.
                 gameManager.ScorePoint(IsBlue(), piece.WasShotFromLegalZone);
-
-                // Destroy or recycle the game piece after scoring
-                Destroy(other.gameObject);
             }
         }
     }
