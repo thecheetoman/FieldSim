@@ -1,8 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -61,19 +62,27 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        int safeIndex = Mathf.Clamp(selectedIndex, 0, prefabList.Count - 1);
+        // 1. Retrieve the selected robot index saved from the Main Menu (defaults to 0 if not found)
+        int savedIndex = PlayerPrefs.GetInt("SelectedRobotIndex", selectedIndex);
 
-        GameObject chosenPrefab = prefabList[safeIndex];
+        // 2. Clamp the index safely within the range of your prefabList
+        int safeIndex = Mathf.Clamp(savedIndex, 0, Mathf.Max(0, prefabList.Count - 1));
 
-        if (chosenPrefab != null)
+        // 3. Instantiate the selected robot prefab
+        if (prefabList != null && prefabList.Count > 0 && prefabList[safeIndex] != null)
         {
             Vector3 targetPosition = spawnLocation != null ? spawnLocation.position : Vector3.zero;
-            Instantiate(chosenPrefab, targetPosition, Quaternion.identity);
+            Quaternion targetRotation = spawnLocation != null ? spawnLocation.rotation : Quaternion.identity;
+
+            Instantiate(prefabList[safeIndex], targetPosition, targetRotation);
+        }
+        else
+        {
+            Debug.LogWarning("[GameManager] Prefab list is empty or the selected robot prefab is missing!");
         }
 
-        // start match with robot disabled and active hub arrow indicators hidden
+        // 4. Start match with robot disabled and active hub arrow indicators hidden
         SetRobotEnabled(false);
-
         SetHubStates(false, false);
 
         if (blueShift != null) blueShift.SetActive(false);
@@ -82,7 +91,7 @@ public class GameManager : MonoBehaviour
         UpdateScoreUI();
 
         float totalMatchLength = autoDuration + teleopTransitionDuration + (shiftDuration * 4) + endgameDuration;
-        Debug.Log(totalMatchLength);
+        Debug.Log("Total Match Length: " + totalMatchLength);
         UpdateTimerUI(totalMatchLength);
     }
 
@@ -100,6 +109,10 @@ public class GameManager : MonoBehaviour
                 // toggle enable state manually if match is running
                 SetRobotEnabled(!IsRobotEnabled);
             }
+        }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 
