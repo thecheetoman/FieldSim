@@ -232,7 +232,7 @@ public class GameManager : MonoBehaviour
         // Update UI indicator objects
         if (blueShift != null) blueShift.SetActive(isBlueHubActive);
         if (redShift != null) redShift.SetActive(isRedHubActive);
-    }   
+    }
 
     private void EndMatch()
     {
@@ -247,54 +247,43 @@ public class GameManager : MonoBehaviour
         UpdateTimerUI(0f);
     }
 
-    // Handle scoring
-    public void scorePoint(bool isBlue)
+    // Handle scoring with legal shot validation passed from HubFuelCounter
+    public void ScorePoint(bool isBlueHub, bool wasShotFromLegalZone)
     {
         if (!gameStarted || isMatchOver) return;
 
-        // Find the player using the "Player" tag
-        GameObject player = GameObject.FindWithTag("Player");
-
-        // Check if player exists and if their X position is less than 3.429
-        bool isBelowXThreshold = false;
-        if (player != null && player.transform.position.x < 3.429f)
+        if (isBlueHub)
         {
-            isBelowXThreshold = true;
-        }
+            if (!isBlueHubActive) return; // Ignore score if Blue Hub is inactive
 
-        if (isBlue)
-        {
-            if (!isBlueHubActive) return; // Ignore score if Hub is inactive!
+            // Check penalty ONLY for Blue Hub shots
+            bool isPenalty = !wasShotFromLegalZone;
 
-            if (isBelowXThreshold)
+            if (isPenalty)
             {
-                // Award 10 points to the other team (Red)
+                // Penalty: Award 10 points to Red, 1 to Blue
                 scoreRed += 10;
                 scoreBlue += 1;
-                if (isAutoPhase) autoScoreRed += 10;
-                if (isAutoPhase) scoreRed += 1;
+                if (isAutoPhase)
+                {
+                    autoScoreRed += 10;
+                    autoScoreBlue += 1;
+                }
             }
             else
-            {   
+            {
+                // Normal Blue score
                 scoreBlue += 1;
                 if (isAutoPhase) autoScoreBlue += 1;
             }
         }
         else
         {
-            if (!isRedHubActive) return; // Ignore score if Hub is inactive!
+            if (!isRedHubActive) return; // Ignore score if Red Hub is inactive
 
-            if (isBelowXThreshold)
-            {
-                // Award 10 points to the other team (Blue)
-                scoreBlue += 10;
-                if (isAutoPhase) autoScoreBlue += 10;
-            }
-            else
-            {
-                scoreRed += 6;
-                if (isAutoPhase) autoScoreRed += 6;
-            }
+            // Red Hub scores normally without checking legal zone
+            scoreRed += 6;
+            if (isAutoPhase) autoScoreRed += 6;
         }
 
         UpdateScoreUI();

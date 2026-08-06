@@ -43,7 +43,7 @@ public class HopperManager : MonoBehaviour
         {
             Transform slotTransform = storageSlots[i];
 
-            // instantate prefab at slot position
+            // instantiate prefab at slot position
             GameObject newFuelObject = Instantiate(fuelPrefab, slotTransform.position, slotTransform.rotation);
 
             if (newFuelObject.TryGetComponent<GamePiece>(out GamePiece ball))
@@ -52,9 +52,10 @@ public class HopperManager : MonoBehaviour
             }
         }
     }
+
     private void Update()
     {
-        // check if shooting contitions are met before shooting
+        // check if shooting conditions are met before shooting
         bool shooterIsAllowed = !requireShooterEvent || isShooterReady;
 
         if (Input.GetKey(shootKey) && Time.time >= nextShootTime && shooterIsAllowed)
@@ -116,7 +117,9 @@ public class HopperManager : MonoBehaviour
         loadedBalls.RemoveAt(0);
 
         Vector3 forceVector = launchPoint.forward * launchSpeed;
-        ballToShoot.Launch(launchPoint.position, launchPoint.rotation, forceVector);
+
+        // Pass transform.position (the robot's position) as the 4th argument
+        ballToShoot.Launch(launchPoint.position, launchPoint.rotation, forceVector, transform.position);
 
         CycleQueue();
     }
