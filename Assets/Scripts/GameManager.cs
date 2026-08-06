@@ -114,6 +114,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("Field");
+        }
     }
 
     public void SetRobotEnabled(bool enable)

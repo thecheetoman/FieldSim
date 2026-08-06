@@ -17002,6 +17002,7 @@ GameObject:
   - component: {fileID: 194083345}
   - component: {fileID: 194083347}
   - component: {fileID: 194083346}
+  - component: {fileID: 194083348}
   m_Layer: 0
   m_Name: 'GE-26309: Hub Front Diffuser'
   m_TagString: Untagged
@@ -17096,6 +17097,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 194083344}
+  m_Mesh: {fileID: -9079780920818394719, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
+--- !u!64 &194083348
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 194083344}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: -9079780920818394719, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
 --- !u!1 &196106847
 GameObject:
@@ -27699,6 +27722,7 @@ GameObject:
   - component: {fileID: 325497715}
   - component: {fileID: 325497717}
   - component: {fileID: 325497716}
+  - component: {fileID: 325497718}
   m_Layer: 0
   m_Name: 'GE-26311: Hub Side Diffuser'
   m_TagString: Untagged
@@ -27825,6 +27849,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 325497714}
+  m_Mesh: {fileID: 2654723223297365531, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
+--- !u!64 &325497718
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 325497714}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 2654723223297365531, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
 --- !u!1 &326452514
 GameObject:
@@ -131821,6 +131867,7 @@ GameObject:
   - component: {fileID: 1582077894}
   - component: {fileID: 1582077896}
   - component: {fileID: 1582077895}
+  - component: {fileID: 1582077897}
   m_Layer: 0
   m_Name: 'GE-26311: Hub Side Diffuser'
   m_TagString: Untagged
@@ -131947,6 +131994,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582077893}
+  m_Mesh: {fileID: 7384644604079615759, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
+--- !u!64 &1582077897
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582077893}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 7384644604079615759, guid: be4541735ccad1b41a5c94b19fe5818a, type: 3}
 --- !u!1 &1582188712
 GameObject:
