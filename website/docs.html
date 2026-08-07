@@ -53,6 +53,7 @@
             <li><a href="#turret">Making a turret for your robot</a></li>
             <li><a href="#animatingShafts">Animating shafts on the robot</a></li>
             <li><a href="#pieces">Making your robot intake, hold fuel, and shoot!</a></li>
+            <li><a href="#RSL">Adding an RSL</a></li>
           </ul>
         </div>
       </aside>
@@ -223,12 +224,14 @@
           moves(doesnt matter if intake doesnt come out), and create a gameobject. Call it Intake. Click
           <code>Add Component > Box Collider</code>. Resize the box collider to be the area that you want to intake
           from, make sure to check "Is Trigger" on the box collider. Then click
-          <code>Add Component > Hopper System.</code>, and bind a key to intake.</p>
+          <code>Add Component > Hopper System.</code>, and bind a key to intake.
+        </p>
         <p><strong>2. Make your hopper hold fuel</strong><br>Create a gameobject that is a child of your robots body.
           Name it PieceSystem. Create a bunch of empty gameobject children under PieceSystem. Then go to your Intake
           gameobject and start adding storage slots. Drag those children gameobjects of piecesystem to those slots. You
           should start to see fuel populate the hopper. Start with fuel closest to your shooter.</p>
-        <p><strong>3. Set up your shooter</strong>Create a game object, call it shooter.(Make this a child of your hood
+        <p><strong>3. Set up your shooter</strong><br>Create a game object, call it shooter.(Make this a child of your
+          hood
           if your robot has a turret) Move this so that it is where fuel will be shot out. Go back to your Intake
           gameobject, start entering values for your shooter. Check Reqiure Shoote Ready if you made a spinning shaft to
           make your robot wait for the shaft to spool up before shooting. Scroll down to Launch point, and assign your
@@ -238,7 +241,18 @@
           fuel. Then adjust your preload count.</p>
         <p>When you finish all of this, you should have something like this!</p>
         <img src="./documentationAssets/completedHopper.png">
-        
+
+        <h2 id="RSL">Add a working RSL</h2>
+        <p>Fieldsimd doesnt come with any preset RSL models, so it should work on most of them. Click on RSL mesh, make
+          sure the RSL color slot is the first slot, then <code>Add Component > RSL</code>. Assign materials like
+          this(found in materials folder).</p>
+        <img src="./documentationAssets/rslconfig.png">
+
+        <h2 id="adding">Adding mods to main game</h2>
+        <p>Go to menu scene. Drag and drop your robot onto playing field where other robots are. Disable the robot
+          gameobject. Click on MenuManager, then add an entry to Robots, and drag and drop your mesh there. Then type a
+          robot name in the other slot. Finally, open the Field scene. Click on gamemamnager, and add your robot prefab
+          to the list</p>
       </article>
     </div>
   </main>
