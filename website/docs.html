@@ -41,6 +41,15 @@
             <li><a href="#controls">Rebuilt Controls</a></li>
           </ul>
         </div>
+        <div class="docs-nav-group">
+          <div class="docs-nav-title">Modding</div>
+          <ul class="docs-nav-links">
+            <li><a href="#moddingIntro">Intro to modding</a></li>
+            <li><a href="#modGettingstarted">Getting Started</a></li>
+            <li><a href="#importingModels">Importing a CAD</a></li>
+            <li><a href="#makingDrivable">Making your robot driveable!</a></li>
+          </ul>
+        </div>
       </aside>
       <article class="docs-content">
         <h1 id="overview">Overview</h1>
@@ -72,7 +81,7 @@
             referrerpolicy="strict-origin"></iframe></div>
 
         <!--start documentation-->
-        <h2 id="moddingIntro ">Intro to modding</h2>
+        <h2 id="moddingIntro">Intro to modding</h2>
         <p>FieldSim allows players to make custom robots! FieldSim is set up to make making turret and static single
           shooters very easy! If you are interested in modding, you should already have some basic Unity and maybe a
           little coding experience prior before attempting to make your own robot. FieldSim does have its limitations,
@@ -82,18 +91,43 @@
           all of the phyisics and other things when the robot you imported has more polygons that a typical fab
           asset.<br><strong>3. Drum shooters and multi turrets are not possible as of now</strong><br>Due to the way
           that the hopper system works, drum shooters and multiple turrets are not possible</p>
-        
+
         <h2 id="modGettingstarted">Getting started!</h2>
         <p>With all of that out of the way, lets get started! First, you will need Unity</p>
-        <p>Go to <a href="http://unity.com/download">Unity's website</a> and download Unity hub. Then download Unity 2022.3.62f3(you may need to go into unity archive). Download this project by clicking github on the top right of this website. Download the repo, unzip it and open it in Unity. Congratulations, you now have FieldSimulator on your computer!</p>
+        <p>Go to <a href="http://unity.com/download">Unity's website</a> and download Unity hub. Then download Unity
+          2022.3.62f3(you may need to go into unity archive). Download this project by clicking github on the top right
+          of this website. Download the repo, unzip it and open it in Unity. Congratulations, you now have
+          FieldSimulator on your computer!</p>
 
         <h2 id="importingModels">Importing Robot CADs</h2>
-        <p>Importing a robot CAD is a necessary step in getting your robot into this game. Start by exporting your robot's CAD from the software it was designed in. I recommend exporting it as an FBX, OBJ, or GLB/GLTF. If you would like to already start optimizing your CAD, open it in blender.(Your cad does not need to have the tank drive base thrown in, FieldSim already has the drivebase)</p>
+        <p>Importing a robot CAD is a necessary step in getting your robot into this game. Start by exporting your
+          robot's CAD from the software it was designed in. I recommend exporting it as an FBX, OBJ, or GLB/GLTF. If you
+          would like to already start optimizing your CAD, open it in blender.(Your cad does not need to have the tank
+          drive base thrown in, FieldSim already has the drivebase)</p>
         <img src="./documentationAssets/OpenInBlender.png">
-        <p>Once in blender delete all of the screws, that really helps with optimizing the CAD. Then export that blender file as an FBX. Drag and drop your robot CAD into Unity's inspector, it should look like this</p>
+        <p>Once in blender delete all of the screws, that really helps with optimizing the CAD. Then export that blender
+          file as an FBX. Drag and drop your robot CAD into Unity's inspector, it should look like this</p>
         <img src="./documentationAssets/CadInUnity.png">
-      </article>
 
+        <h2 id="makingDrivable">How to make your robot driveable!</h2>
+        <p>Next, you should consider making your robot driveable. This should be really easy since I included a
+          drivebase thats all rigged up. Simply duplicate the Drivebase prefab in <code>/Resources/Robots/</code>. You
+          can name it to whatever you want. You can then drag and drop your Robot CAD, make sure to parent it to
+          "Robot". Right click the mesh, and select <code>Prefab > Unpack Completely</code>. You should then be able to
+          delete all drivetrain components on the robot. Look at this reference picture for example.</p>
+        <img src="./documentationAssets/robotOnDrivebase.png">
+        <p>To test out your robot, open <code>Scenes/TestField</code>, Delete the robot currently there, and drag your
+          prefab onto the field. Raise it over the field like so. Hit play and try it out!</p>
+        <img src="./documentationAssets/customRobotOnTestField.png">
+
+        <h2 id="sliding">Make a sliding assembly for your intake</h2>
+        <p>To make your robot have a sliding intake, there are multiple steps.</p>
+        <p><strong>1. Reorganize gameobjects</strong><br>Create an empty game object, call it SlidingWhateverItIs(EX. SlidingIntake). Then create a child of it, naming it ___Rack(EX.IntakeRack). Orient your Rack gameobject so that its z axis arrow points along the plane that your sliding thing will slide along. Make all meshes a child of that ___Rack object you just created. Like so</p>
+        <img src="./documentationAssets/slidingParenting.png">
+        <p><strong>2. Fix transforms</strong><br>Click your Sliding object, and go to the top area and click <code>Tools > Snap Selected Object to Child Mesh Center</code> This should make the transform on that object go all wacky. If you select its child(the Rack object), it should just have a rotation, everything else should be 0s.</p>
+        <p><strong>3. Make it all work</strong><br>On your Rack gameobject, click <code>Add Component > Sliding Rack</code>. Modify the Extended and Retracted positions by moving around the Rack gameobject to get transforms (Don't worry, the script will teleport everything back into place at the end). Assign your keybind for opening that rack, change the Lerp speed and your done! It should look something like this</p>
+        <img src="./documentationAssets/slidingFinished.png">
+      </article>
     </div>
   </main>
 
