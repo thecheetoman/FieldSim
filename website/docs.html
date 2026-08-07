@@ -48,6 +48,7 @@
             <li><a href="#modGettingstarted">Getting Started</a></li>
             <li><a href="#importingModels">Importing a CAD</a></li>
             <li><a href="#makingDrivable">Making your robot driveable!</a></li>
+            <li><a href="#sliding">Making a sliding assembly(intake)</a></li>
           </ul>
         </div>
       </aside>
@@ -127,6 +128,15 @@
         <p><strong>2. Fix transforms</strong><br>Click your Sliding object, and go to the top area and click <code>Tools > Snap Selected Object to Child Mesh Center</code> This should make the transform on that object go all wacky. If you select its child(the Rack object), it should just have a rotation, everything else should be 0s.</p>
         <p><strong>3. Make it all work</strong><br>On your Rack gameobject, click <code>Add Component > Sliding Rack</code>. Modify the Extended and Retracted positions by moving around the Rack gameobject to get transforms (Don't worry, the script will teleport everything back into place at the end). Assign your keybind for opening that rack, change the Lerp speed and your done! It should look something like this</p>
         <img src="./documentationAssets/slidingFinished.png">
+
+        <h2 id="hinged">Making a hinged assembly for your intake</h2>
+        <p>Not all robots have sliding intakes. Some have hinged intakes such as the 9450 bot featured in FieldSim. You should already have your driveable robot by this point. Lets get started!</p>
+        <p><strong>1. Set up gameobjects</strong><br>Adding a hinged intake has a similar process compared to a sliding intake. Start by creating a gameobject and call it Arm. Create a child of that gameobject, name it ArmPivot. Set your transform to local, and move ArmPivot so that one of its axes lie on the pivot point. Take a look at this example picture, the X axis of the ArmPivot is along the hexshaft on the intake hinge.</p>
+        <img src="./documentationAssets/hingedAlignment.png">
+        <p>Once you have set up your pivot, make the, drag all of the meshes of your intake to be its children. Once you finish that you should be able to rotate that pivot gameobject to move the intake. It should looks something like this:</p>
+        <img src="./documentationAssets/flopyintak.gif">
+        <p><strong>2. Add the script and test!</strong><br>Now its time to make it all work. Click on your ArmPivot gameobject, <code>Add Componenet > Rotating Joing(script)</code>. Based on the axis that you have to rotate your pivot to raise/lower this hinge, make that corresponding axis 1, and the others 0 in the hinge settings. Rotate your hinged joint around to find your retracted and extended angle. Dont worry, the script will revert the changes when you start playing. Bind a key to the script, and try it out!</p>
+        <img src="./documentationAssets/hingeIntakeDemo.gif">
       </article>
     </div>
   </main>
