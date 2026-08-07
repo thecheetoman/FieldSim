@@ -337,3 +337,17 @@ a{
   justify-content: center;
   flex-wrap: wrap;
 }
+.homeTitle {
+  padding: 20px;
+  background: rgba(11, 15, 25, 0.466);
+  border-radius: 20px;
+  border-color: rgba(11, 15, 25, 0.466);
+}
+.docs-content img {
+  max-width: 100%;       
+  height: auto;          
+  display: block;        
+  margin: 1.5rem 0;      
+  border-radius: 8px;    
+  border: 1px solid var(--border-color); 
+}
