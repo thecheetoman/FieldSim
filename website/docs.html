@@ -51,6 +51,8 @@
             <li><a href="#sliding">Making a sliding assembly(intake)</a></li>
             <li><a href="#hinged">Making a hinged assembly(intake)</a></li>
             <li><a href="#turret">Making a turret for your robot</a></li>
+            <li><a href="#animatingShafts">Animating shafts on the robot</a></li>
+            <li><a href="#pieces">Making your robot intake, hold fuel, and shoot!</a></li>
           </ul>
         </div>
       </aside>
@@ -173,7 +175,8 @@
           <code>Add Component > Turret Aim</code>. Drag and drop the transform of the pivot object onto the script.
           Select the axis that the turret has to rotate on to aim. Then play the game. The turret should aim towards the
           hub after enabling the robot. It might be off, so tweak angle offset as necessary. When playing, try pressing
-          J/K/L to change targets.</p>
+          J/K/L to change targets.
+        </p>
         <img src="./documentationAssets/turretAim.png">
         <p><strong>3. Set up hood game object</strong><br>This is a similar process to adding a hinged joint. Start by
           making an empty child of the turret pivot. Call it hood pivot, and put it on the flywheel, make sure that one
@@ -186,7 +189,56 @@
           make the robot aim towards the hub correctly. The best way to do this is to go to the neutral zone on
           testfield, and rotate through J > K > L, to switch targets. The turret should rotate, and the hood should also
           adjust</p>
-          <img src="./documentationAssets/turretComplete.gif">
+        <img src="./documentationAssets/turretComplete.gif">
+
+        <h2 id="animatingShafts">Animating shafts on the robot</h2>
+        <p>Most of the hexshafts and rollers in Rebuilt robots spin to move fuel around. This is possible in FieldSim.
+          You can use this on intakes, indexers and shooters. On shooters you can even force your shooter to not shoot
+          until you have fully spun up the shaft. The spinning shaft system in Fieldsim also allows you to have dynamic
+          sound.</p>
+        <p><strong>1. Set up gameobjects</strong><br>Start by creating a gameobject, for this tutorial, I am going to
+          call it IntakeShaft, since I am going to animate the intake rollers on 9126. Make the rollers parts a child of
+          the intakeshaft gameobject. The transform needs to be such that one axis of the intakeshaft gameobject is the
+          axis that the roller is going to spin. If the gameobject is not centered properly, use
+          <code>Tools > Snap Object to Child Mesh Center</code>. It is okay if the intakeshaft gameobject is not
+          perfectly centered.
+        </p>
+        <img src="./documentationAssets/rollerTransform.png">
+        <p><strong>2. Set up script</strong><br>Add the script by clicking on your intakeShaft gameobject, and
+          <code>Add Component > Spinning Shaft</code>. Drag the transform component into the corresponding slot on the
+          script, name the shaft if you would like to. Then you can adjust the speeds of the shaft, I would recommend
+          decreasing the deceleration rate, as it doesnt feel realistic. Try 7200 as the deceleration rate. Change the
+          axis to the axis that your roller needs to spin on. Then bind your keybind to the shaft, and you can get
+          started on audio!
+        </p>
+        <p><strong>3. Set up audio(optional)</strong>Click <code>Add Component > Audio Source</code>, and drag and drop
+          that component into the script's slot. Adjust the pitch settings and try it out</p>
+        <p><strong>4. Set up shooter(Only for a shooter/turret)</strong><br>Add one event for max speed reached and ramp
+          down started. Drag and drop your intake gameobject(see next step for how to set this up), and assign
+          setshooterready and setshooternotready to the corresponding events.</p>
+
+        <h2 id="pieces">Making your robot intake, hold fuel, and shoot</h2>
+        <p>This will make your robot work, you want that right?</p>
+        <p><strong>1. Make your intake <em>intake</em></strong><br>Start by going to the part of your intake that
+          moves(doesnt matter if intake doesnt come out), and create a gameobject. Call it Intake. Click
+          <code>Add Component > Box Collider</code>. Resize the box collider to be the area that you want to intake
+          from, make sure to check "Is Trigger" on the box collider. Then click
+          <code>Add Component > Hopper System.</code>, and bind a key to intake.</p>
+        <p><strong>2. Make your hopper hold fuel</strong><br>Create a gameobject that is a child of your robots body.
+          Name it PieceSystem. Create a bunch of empty gameobject children under PieceSystem. Then go to your Intake
+          gameobject and start adding storage slots. Drag those children gameobjects of piecesystem to those slots. You
+          should start to see fuel populate the hopper. Start with fuel closest to your shooter.</p>
+        <p><strong>3. Set up your shooter</strong>Create a game object, call it shooter.(Make this a child of your hood
+          if your robot has a turret) Move this so that it is where fuel will be shot out. Go back to your Intake
+          gameobject, start entering values for your shooter. Check Reqiure Shoote Ready if you made a spinning shaft to
+          make your robot wait for the shaft to spool up before shooting. Scroll down to Launch point, and assign your
+          shooter gameobject</p>
+        <p><strong>4. Add preload fuel(optional)</strong><br>You can have up to 8 fuel in your robot at the beginning of
+          the match. To do this, go to preload settings on your Intake gameobject, click fuel prefab, select assets, and
+          fuel. Then adjust your preload count.</p>
+        <p>When you finish all of this, you should have something like this!</p>
+        <img src="./documentationAssets/completedHopper.png">
+        
       </article>
     </div>
   </main>
