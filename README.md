@@ -1,6 +1,6 @@
 # FieldSimulator
 
-A high-performance Unity simulation game anyone to test and drive FRC robots for the 2026 Rebuilt season.
+A high-performance Unity simulation game for anyone to test and drive FRC robots for the 2026 Rebuilt season.
 ![hella tuff screenshot](./website/assets/screenshot1.png)
 [Download release here!](https://thecheetoman.github.io/FieldSim/)
 
