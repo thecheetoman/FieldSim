@@ -49,6 +49,8 @@
             <li><a href="#importingModels">Importing a CAD</a></li>
             <li><a href="#makingDrivable">Making your robot driveable!</a></li>
             <li><a href="#sliding">Making a sliding assembly(intake)</a></li>
+            <li><a href="#hinged">Making a hinged assembly(intake)</a></li>
+            <li><a href="#turret">Making a turret for your robot</a></li>
           </ul>
         </div>
       </aside>
@@ -123,20 +125,68 @@
 
         <h2 id="sliding">Make a sliding assembly for your intake</h2>
         <p>To make your robot have a sliding intake, there are multiple steps.</p>
-        <p><strong>1. Reorganize gameobjects</strong><br>Create an empty game object, call it SlidingWhateverItIs(EX. SlidingIntake). Then create a child of it, naming it ___Rack(EX.IntakeRack). Orient your Rack gameobject so that its z axis arrow points along the plane that your sliding thing will slide along. Make all meshes a child of that ___Rack object you just created. Like so</p>
+        <p><strong>1. Reorganize gameobjects</strong><br>Create an empty game object, call it SlidingWhateverItIs(EX.
+          SlidingIntake). Then create a child of it, naming it ___Rack(EX.IntakeRack). Orient your Rack gameobject so
+          that its z axis arrow points along the plane that your sliding thing will slide along. Make all meshes a child
+          of that ___Rack object you just created. Like so</p>
         <img src="./documentationAssets/slidingParenting.png">
-        <p><strong>2. Fix transforms</strong><br>Click your Sliding object, and go to the top area and click <code>Tools > Snap Selected Object to Child Mesh Center</code> This should make the transform on that object go all wacky. If you select its child(the Rack object), it should just have a rotation, everything else should be 0s.</p>
-        <p><strong>3. Make it all work</strong><br>On your Rack gameobject, click <code>Add Component > Sliding Rack</code>. Modify the Extended and Retracted positions by moving around the Rack gameobject to get transforms (Don't worry, the script will teleport everything back into place at the end). Assign your keybind for opening that rack, change the Lerp speed and your done! It should look something like this</p>
+        <p><strong>2. Fix transforms</strong><br>Click your Sliding object, and go to the top area and click
+          <code>Tools > Snap Selected Object to Child Mesh Center</code> This should make the transform on that object
+          go all wacky. If you select its child(the Rack object), it should just have a rotation, everything else should
+          be 0s.
+        </p>
+        <p><strong>3. Make it all work</strong><br>On your Rack gameobject, click
+          <code>Add Component > Sliding Rack</code>. Modify the Extended and Retracted positions by moving around the
+          Rack gameobject to get transforms (Don't worry, the script will teleport everything back into place at the
+          end). Assign your keybind for opening that rack, change the Lerp speed and your done! It should look something
+          like this
+        </p>
         <img src="./documentationAssets/slidingFinished.png">
 
         <h2 id="hinged">Making a hinged assembly for your intake</h2>
-        <p>Not all robots have sliding intakes. Some have hinged intakes such as the 9450 bot featured in FieldSim. You should already have your driveable robot by this point. Lets get started!</p>
-        <p><strong>1. Set up gameobjects</strong><br>Adding a hinged intake has a similar process compared to a sliding intake. Start by creating a gameobject and call it Arm. Create a child of that gameobject, name it ArmPivot. Set your transform to local, and move ArmPivot so that one of its axes lie on the pivot point. Take a look at this example picture, the X axis of the ArmPivot is along the hexshaft on the intake hinge.</p>
+        <p>Not all robots have sliding intakes. Some have hinged intakes such as the 9450 bot featured in FieldSim. You
+          should already have your driveable robot by this point. Lets get started!</p>
+        <p><strong>1. Set up gameobjects</strong><br>Adding a hinged intake has a similar process compared to a sliding
+          intake. Start by creating a gameobject and call it Arm. Create a child of that gameobject, name it ArmPivot.
+          Set your transform to local, and move ArmPivot so that one of its axes lie on the pivot point. Take a look at
+          this example picture, the X axis of the ArmPivot is along the hexshaft on the intake hinge.</p>
         <img src="./documentationAssets/hingedAlignment.png">
-        <p>Once you have set up your pivot, make the, drag all of the meshes of your intake to be its children. Once you finish that you should be able to rotate that pivot gameobject to move the intake. It should looks something like this:</p>
+        <p>Once you have set up your pivot, make the, drag all of the meshes of your intake to be its children. Once you
+          finish that you should be able to rotate that pivot gameobject to move the intake. It should looks something
+          like this:</p>
         <img src="./documentationAssets/flopyintak.gif">
-        <p><strong>2. Add the script and test!</strong><br>Now its time to make it all work. Click on your ArmPivot gameobject, <code>Add Componenet > Rotating Joing(script)</code>. Based on the axis that you have to rotate your pivot to raise/lower this hinge, make that corresponding axis 1, and the others 0 in the hinge settings. Rotate your hinged joint around to find your retracted and extended angle. Dont worry, the script will revert the changes when you start playing. Bind a key to the script, and try it out!</p>
+        <p><strong>2. Add the script and test!</strong><br>Now its time to make it all work. Click on your ArmPivot
+          gameobject, <code>Add Componenet > Rotating Joing(script)</code>. Based on the axis that you have to rotate
+          your pivot to raise/lower this hinge, make that corresponding axis 1, and the others 0 in the hinge settings.
+          Rotate your hinged joint around to find your retracted and extended angle. Dont worry, the script will revert
+          the changes when you start playing. Bind a key to the script, and try it out!</p>
         <img src="./documentationAssets/hingeIntakeDemo.gif">
+
+        <h2 id="turret">Making a turret bot!</h2>
+        <p>Static shooter bots don't need any effort in FieldSim, and turret bots are just cooler(imo). Here is how to
+          make one!</p>
+        <p><strong>1. Set up gameobjects</strong><br>To start, create a gameobject, call it turretPivot, or something
+          similar. Position it like so, so if you rotate it along an axis it will rotate the turret. Make all turret
+          gameobjects a childof that pivot point. You should be able to rotate the turret along an axis like so.</p>
+        <img src="./documentationAssets/turretPivot.gif">
+        <p><strong>2. Make the turret point towards its target</strong><br>Now that the turret gameobject is ready, hit
+          <code>Add Component > Turret Aim</code>. Drag and drop the transform of the pivot object onto the script.
+          Select the axis that the turret has to rotate on to aim. Then play the game. The turret should aim towards the
+          hub after enabling the robot. It might be off, so tweak angle offset as necessary. When playing, try pressing
+          J/K/L to change targets.</p>
+        <img src="./documentationAssets/turretAim.png">
+        <p><strong>3. Set up hood game object</strong><br>This is a similar process to adding a hinged joint. Start by
+          making an empty child of the turret pivot. Call it hood pivot, and put it on the flywheel, make sure that one
+          of its axes align with the way the hood should move. Then make the meshes of the hood its children. You should
+          be able to rotate your hood like this now:</p>
+        <img src="./documentationAssets/hoodpivot.gif">
+        <p><strong>4. Set up hood aiming</strong><br>This is the final step of making your turret. Start by clicking on
+          your hoodpivot gameobject, <code>Add Component > Hood Aim</code>. Drag the transform component onto the
+          scripts gameobject slot, and select the axis on which the hood should rotate. Then adjust the parameters to
+          make the robot aim towards the hub correctly. The best way to do this is to go to the neutral zone on
+          testfield, and rotate through J > K > L, to switch targets. The turret should rotate, and the hood should also
+          adjust</p>
+          <img src="./documentationAssets/turretComplete.gif">
       </article>
     </div>
   </main>
