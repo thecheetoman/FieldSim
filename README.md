@@ -15,7 +15,7 @@ A high-performance Unity simulation game for anyone to test and drive FRC robots
 * **Full static and turret shooter support:** Turrets and static shooters are fully implemented, making it possible to make a massive array of robots
 * **3 Example robots:** 2026 Kitbot, 9126 Silver Hawks, 9450 Velocity Raptors.
 
-## 🛠️ Modding & Local Development
+## Modding & Local Development
 
 To modify the game or build custom robots:
 
