@@ -90,11 +90,11 @@ public class HoodAim : MonoBehaviour
         {
             if (hubTarget != null) currentTarget = hubTarget;
         }
-        else if (Input.GetKeyDown(KeyCode.J))
+        else if (Input.GetKeyDown(KeyCode.U))
         {
             if (passLeftTarget != null) currentTarget = passLeftTarget;
         }
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.O))
         {
             if (passRightTarget != null) currentTarget = passRightTarget;
         }

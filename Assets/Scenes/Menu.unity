@@ -25350,6 +25350,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2061788300}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &594231546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7874179249615635595, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+    type: 3}
+  m_PrefabInstance: {fileID: 1241193051}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &594598220
 GameObject:
   m_ObjectHideFlags: 0
@@ -38168,10 +38174,12 @@ MonoBehaviour:
   - {fileID: 51845524}
   - {fileID: 866811110}
   - {fileID: 1054266277}
+  - {fileID: 594231546}
   RobotNames:
   - FRC 2026 Kitbot
   - 9450 Velocity Raptors
   - 9126 Silver Hawks
+  - vraptor testing
   fadeDuration: 0.1
 --- !u!4 &1090335862
 Transform:
@@ -41928,6 +41936,79 @@ Transform:
   - {fileID: 1832052910}
   m_Father: {fileID: 1826456295}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1241193051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 5.366
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.186
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.437
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.47082767
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.8822253
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -123.824
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946440170970772317, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874179249615635595, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_Name
+      value: VRaptorSwerve
+      objectReference: {fileID: 0}
+    - target: {fileID: 7874179249615635595, guid: ec3a62f6cde2a8048a6556c8237a1ba4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec3a62f6cde2a8048a6556c8237a1ba4, type: 3}
 --- !u!1 &1242401644
 GameObject:
   m_ObjectHideFlags: 0
@@ -86231,3 +86312,4 @@ SceneRoots:
   - {fileID: 517412735}
   - {fileID: 1090335862}
   - {fileID: 192879880}
+  - {fileID: 1241193051}

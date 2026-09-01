@@ -85828,6 +85828,7 @@ MonoBehaviour:
   - {fileID: 296568160100139844, guid: fa9e4bbb6a6373f41955d33b0b9977c9, type: 3}
   - {fileID: 7874179249615635595, guid: b7ecf450de3e24b42b634ead5189e8c8, type: 3}
   - {fileID: 9137515320569696753, guid: 2efae3df52e8c264a8a3d4c73327a3ac, type: 3}
+  - {fileID: 7874179249615635595, guid: ec3a62f6cde2a8048a6556c8237a1ba4, type: 3}
   selectedIndex: 2
   spawnLocation: {fileID: 47061399}
 --- !u!4 &982276908
