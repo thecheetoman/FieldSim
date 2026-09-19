@@ -1,1 +1,2 @@
 *.fbx filter=lfs diff=lfs merge=lfs -text
+Assets/Resources/2658.fbx filter=lfs diff=lfs merge=lfs -text
